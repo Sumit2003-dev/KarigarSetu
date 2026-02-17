@@ -1,0 +1,79 @@
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import { DollarSign, Package, TrendingUp, PlusCircle, BarChart3, Wallet } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+
+const cards = [
+  { icon: DollarSign, label: "Total Earnings", value: "₹48,500", change: "+12% this month" },
+  { icon: Wallet, label: "Pending Payments", value: "₹8,200", change: "3 orders" },
+  { icon: Package, label: "Active Orders", value: "7", change: "2 new today" },
+  { icon: TrendingUp, label: "Trending Designs", value: "Tepchi, Phanda", change: "High demand" },
+];
+
+const quickLinks = [
+  { icon: PlusCircle, label: "Add Product", href: "/artisan/add-product", desc: "Upload a new Chikankari piece" },
+  { icon: Package, label: "My Inventory", href: "/artisan/inventory", desc: "Manage your listed products" },
+  { icon: BarChart3, label: "Trend Advisory", href: "/artisan/trends", desc: "AI-powered market insights" },
+  { icon: Wallet, label: "Wallet & Payments", href: "/artisan/wallet", desc: "Track earnings and withdrawals" },
+];
+
+export default function ArtisanDashboard() {
+  return (
+    <div className="min-h-screen bg-background">
+      <Navbar />
+      <main className="pt-24 pb-16">
+        <div className="container px-4 md:px-8">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+            <h1 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-2">
+              Namaste, Karigar! 🙏
+            </h1>
+            <p className="text-muted-foreground mb-8">Your artisan dashboard — track orders, earnings, and trends.</p>
+          </motion.div>
+
+          {/* Stat cards */}
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
+            {cards.map((c, i) => (
+              <motion.div
+                key={c.label}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.1 }}
+                className="bg-card rounded-xl p-5 border border-border/50 shadow-warm"
+              >
+                <c.icon className="w-6 h-6 text-accent mb-3" />
+                <div className="text-2xl font-display font-bold text-foreground">{c.value}</div>
+                <div className="text-sm text-muted-foreground">{c.label}</div>
+                <div className="text-xs text-accent mt-1">{c.change}</div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Quick actions */}
+          <h2 className="font-display text-xl font-semibold text-foreground mb-4">Quick Actions</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {quickLinks.map((q, i) => (
+              <motion.div
+                key={q.label}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 + i * 0.1 }}
+              >
+                <Link
+                  to={q.href}
+                  className="block bg-card rounded-xl p-6 border border-border/50 shadow-warm hover:shadow-gold transition-shadow group"
+                >
+                  <q.icon className="w-8 h-8 text-accent mb-3 group-hover:scale-110 transition-transform" />
+                  <div className="font-semibold text-foreground">{q.label}</div>
+                  <div className="text-sm text-muted-foreground">{q.desc}</div>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </main>
+      <Footer />
+    </div>
+  );
+}
