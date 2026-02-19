@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
+import { useLang } from "@/contexts/LanguageContext";
 
 export default function Footer() {
+  const { t } = useLang();
   return (
     <footer className="bg-primary text-primary-foreground">
       <div className="container px-4 md:px-8 py-12 md:py-16">
@@ -15,24 +17,24 @@ export default function Footer() {
             </p>
           </div>
           <div>
-            <h4 className="font-semibold text-sm uppercase tracking-wider mb-4 text-gold-light">Quick Links</h4>
+            <h4 className="font-semibold text-sm uppercase tracking-wider mb-4 text-gold-light">{t.quickLinks}</h4>
             <ul className="space-y-2 text-sm text-primary-foreground/70">
-              <li><Link to="/shop" className="hover:text-primary-foreground transition-colors">Shop</Link></li>
-              <li><Link to="/artisan" className="hover:text-primary-foreground transition-colors">Artisan Portal</Link></li>
-              <li><Link to="/about" className="hover:text-primary-foreground transition-colors">About Us</Link></li>
+              <li><Link to="/shop" className="hover:text-primary-foreground transition-colors">{t.shop}</Link></li>
+              <li><Link to="/artisan" className="hover:text-primary-foreground transition-colors">{t.artisanPortal}</Link></li>
+              <li><Link to="/about" className="hover:text-primary-foreground transition-colors">{t.aboutUs}</Link></li>
             </ul>
           </div>
           <div>
-            <h4 className="font-semibold text-sm uppercase tracking-wider mb-4 text-gold-light">Support</h4>
+            <h4 className="font-semibold text-sm uppercase tracking-wider mb-4 text-gold-light">{t.support}</h4>
             <ul className="space-y-2 text-sm text-primary-foreground/70">
-              <li><Link to="/buyer" className="hover:text-primary-foreground transition-colors">Buyer Help</Link></li>
-              <li><Link to="/boutique" className="hover:text-primary-foreground transition-colors">Boutique Partners</Link></li>
-              <li><Link to="/admin" className="hover:text-primary-foreground transition-colors">Admin</Link></li>
+              <li><Link to="/auth" className="hover:text-primary-foreground transition-colors">{t.login}</Link></li>
+              <li><Link to="/boutique" className="hover:text-primary-foreground transition-colors">{t.boutiquePartners}</Link></li>
+              <li><Link to="/admin" className="hover:text-primary-foreground transition-colors">{t.admin}</Link></li>
             </ul>
           </div>
         </div>
         <div className="border-t border-primary-foreground/10 pt-6 text-center text-xs text-primary-foreground/50">
-          © {new Date().getFullYear()} ChikanSetu. Empowering artisans, one stitch at a time.
+          © {new Date().getFullYear()} {t.copyright}
         </div>
       </div>
     </footer>

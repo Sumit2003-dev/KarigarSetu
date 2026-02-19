@@ -14,13 +14,327 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      artisan_details: {
+        Row: {
+          aadhaar_number: string | null
+          bank_account: string | null
+          created_at: string
+          id: string
+          pending_earnings: number | null
+          profile_id: string
+          total_earnings: number | null
+          updated_at: string
+          upi_id: string | null
+          verification_status: string
+        }
+        Insert: {
+          aadhaar_number?: string | null
+          bank_account?: string | null
+          created_at?: string
+          id?: string
+          pending_earnings?: number | null
+          profile_id: string
+          total_earnings?: number | null
+          updated_at?: string
+          upi_id?: string | null
+          verification_status?: string
+        }
+        Update: {
+          aadhaar_number?: string | null
+          bank_account?: string | null
+          created_at?: string
+          id?: string
+          pending_earnings?: number | null
+          profile_id?: string
+          total_earnings?: number | null
+          updated_at?: string
+          upi_id?: string | null
+          verification_status?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "artisan_details_profile_id_fkey"
+            columns: ["profile_id"]
+            isOneToOne: true
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      disputes: {
+        Row: {
+          created_at: string
+          id: string
+          order_id: string
+          reason: string
+          reported_by: string
+          resolution: string | null
+          status: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          order_id: string
+          reason: string
+          reported_by: string
+          resolution?: string | null
+          status?: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          order_id?: string
+          reason?: string
+          reported_by?: string
+          resolution?: string | null
+          status?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "disputes_order_id_fkey"
+            columns: ["order_id"]
+            isOneToOne: false
+            referencedRelation: "orders"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "disputes_reported_by_fkey"
+            columns: ["reported_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      order_items: {
+        Row: {
+          artisan_id: string | null
+          created_at: string
+          id: string
+          order_id: string
+          price_at_purchase: number
+          product_id: string
+          quantity: number
+        }
+        Insert: {
+          artisan_id?: string | null
+          created_at?: string
+          id?: string
+          order_id: string
+          price_at_purchase: number
+          product_id: string
+          quantity?: number
+        }
+        Update: {
+          artisan_id?: string | null
+          created_at?: string
+          id?: string
+          order_id?: string
+          price_at_purchase?: number
+          product_id?: string
+          quantity?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "order_items_artisan_id_fkey"
+            columns: ["artisan_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "order_items_order_id_fkey"
+            columns: ["order_id"]
+            isOneToOne: false
+            referencedRelation: "orders"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "order_items_product_id_fkey"
+            columns: ["product_id"]
+            isOneToOne: false
+            referencedRelation: "products"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      orders: {
+        Row: {
+          buyer_id: string
+          created_at: string
+          escrow_released: boolean | null
+          id: string
+          shipping_address: string | null
+          status: string
+          total_amount: number
+          updated_at: string
+        }
+        Insert: {
+          buyer_id: string
+          created_at?: string
+          escrow_released?: boolean | null
+          id?: string
+          shipping_address?: string | null
+          status?: string
+          total_amount?: number
+          updated_at?: string
+        }
+        Update: {
+          buyer_id?: string
+          created_at?: string
+          escrow_released?: boolean | null
+          id?: string
+          shipping_address?: string | null
+          status?: string
+          total_amount?: number
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "orders_buyer_id_fkey"
+            columns: ["buyer_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      products: {
+        Row: {
+          artisan_id: string
+          authenticity_score: number | null
+          created_at: string
+          description: string | null
+          description_hi: string | null
+          description_ur: string | null
+          fabric_type: string | null
+          fair_min_price: number | null
+          id: string
+          images: Json | null
+          is_active: boolean | null
+          is_certified: boolean | null
+          material_cost: number | null
+          name: string
+          name_hi: string | null
+          name_ur: string | null
+          selling_price: number | null
+          sold_count: number | null
+          stitch_type: string | null
+          suggested_price: number | null
+          time_taken_hours: number | null
+          updated_at: string
+        }
+        Insert: {
+          artisan_id: string
+          authenticity_score?: number | null
+          created_at?: string
+          description?: string | null
+          description_hi?: string | null
+          description_ur?: string | null
+          fabric_type?: string | null
+          fair_min_price?: number | null
+          id?: string
+          images?: Json | null
+          is_active?: boolean | null
+          is_certified?: boolean | null
+          material_cost?: number | null
+          name: string
+          name_hi?: string | null
+          name_ur?: string | null
+          selling_price?: number | null
+          sold_count?: number | null
+          stitch_type?: string | null
+          suggested_price?: number | null
+          time_taken_hours?: number | null
+          updated_at?: string
+        }
+        Update: {
+          artisan_id?: string
+          authenticity_score?: number | null
+          created_at?: string
+          description?: string | null
+          description_hi?: string | null
+          description_ur?: string | null
+          fabric_type?: string | null
+          fair_min_price?: number | null
+          id?: string
+          images?: Json | null
+          is_active?: boolean | null
+          is_certified?: boolean | null
+          material_cost?: number | null
+          name?: string
+          name_hi?: string | null
+          name_ur?: string | null
+          selling_price?: number | null
+          sold_count?: number | null
+          stitch_type?: string | null
+          suggested_price?: number | null
+          time_taken_hours?: number | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "products_artisan_id_fkey"
+            columns: ["artisan_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      profiles: {
+        Row: {
+          address: string | null
+          avatar_url: string | null
+          created_at: string
+          email: string | null
+          full_name: string | null
+          id: string
+          phone: string | null
+          preferred_language: string | null
+          role: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          address?: string | null
+          avatar_url?: string | null
+          created_at?: string
+          email?: string | null
+          full_name?: string | null
+          id?: string
+          phone?: string | null
+          preferred_language?: string | null
+          role?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          address?: string | null
+          avatar_url?: string | null
+          created_at?: string
+          email?: string | null
+          full_name?: string | null
+          id?: string
+          phone?: string | null
+          preferred_language?: string | null
+          role?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      get_my_profile_id: { Args: never; Returns: string }
+      get_my_role: { Args: never; Returns: string }
+      is_admin: { Args: never; Returns: boolean }
     }
     Enums: {
       [_ in never]: never
