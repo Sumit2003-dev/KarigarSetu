@@ -3,22 +3,25 @@ import { Package, MessageSquare, Palette, BarChart3 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-
-const features = [
-  { icon: Package, title: "Bulk Orders", desc: "Place wholesale orders directly with verified artisans at negotiated prices." },
-  { icon: MessageSquare, title: "Direct Messaging", desc: "Communicate directly with artisans for custom requirements and timelines." },
-  { icon: Palette, title: "Custom Designs", desc: "Request bespoke Chikankari designs tailored to your boutique's collection." },
-  { icon: BarChart3, title: "Trend Reports", desc: "Access AI-powered trend forecasts to stay ahead of seasonal demand." },
-];
+import { useLang } from "@/contexts/LanguageContext";
 
 export default function BoutiqueDashboard() {
+  const { t } = useLang();
+
+  const features = [
+    { icon: Package, title: "Bulk Orders", desc: "Place wholesale orders directly with verified artisans at negotiated prices." },
+    { icon: MessageSquare, title: "Direct Messaging", desc: "Communicate directly with artisans for custom requirements and timelines." },
+    { icon: Palette, title: "Custom Designs", desc: "Request bespoke Chikankari designs tailored to your boutique's collection." },
+    { icon: BarChart3, title: t.trendAdvisory, desc: t.trendAdvisoryDesc },
+  ];
+
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
       <main className="pt-24 pb-16">
         <div className="container px-4 md:px-8">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-            <h1 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-2">Boutique Partner Portal</h1>
+            <h1 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-2">{t.boutiquePartners}</h1>
             <p className="text-muted-foreground mb-10">Source authentic Chikankari at scale for your business.</p>
           </motion.div>
 
