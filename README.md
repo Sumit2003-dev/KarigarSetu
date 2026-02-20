@@ -1,10 +1,10 @@
-🌸 ChikanSetu – The Artisan’s Ledger
+🌸 KarigarSetu – The Artisan’s Ledger
 
-ChikanSetu is a digital platform designed to empower grassroots Chikankari artisans of Lucknow by creating a transparent and direct connection between artisans and buyers. The platform addresses the issue of information asymmetry in the traditional Chikankari supply chain, where artisans often receive minimal compensation compared to final retail prices.
+KarigarSetu is a digital platform designed to empower grassroots Chikankari artisans of Lucknow by creating a transparent and direct connection between artisans and buyers. The platform addresses the issue of information asymmetry in the traditional Chikankari supply chain, where artisans often receive minimal compensation compared to final retail prices.
 
 📌 Project Overview
 
-ChikanSetu aims to:
+KarigarSetu aims to:
 
 Provide artisans with a digital platform to showcase their handcrafted products
 
@@ -67,4 +67,4 @@ The application follows a modern frontend architecture with a responsive and mob
 
 🎯 Vision
 
-ChikanSetu aims to transform traditional Chikan artisans into digitally empowered entrepreneurs by leveraging transparency, accessibility, and technology-driven trust.
+KarigarSetu aims to transform traditional Chikan artisans into digitally empowered entrepreneurs by leveraging transparency, accessibility, and technology-driven trust.
